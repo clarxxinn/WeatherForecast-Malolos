@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>About — Malolos Weather Monitor</title>
+    <meta
+      name="description"
+      content="How the Malolos Weather Monitor works: its data sources, how advisories are derived, and why PAGASA remains the official authority."
+    />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#08121a" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/css/themes.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/weather-bg.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+
+    <script src="/js/theme-init.js"></script>
+  </head>
+  <body data-page="about">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header id="site-header"></header>
+
+    <main id="main" class="shell page">
+      <section class="section-head" aria-label="Page heading">
+        <div>
+          <p class="eyebrow">About this monitor</p>
+          <h1 class="section-title">A focused weather instrument for one place</h1>
+          <p class="section-sub">
+            The Malolos Weather Monitor tracks live conditions for Malolos, Bulacan, and presents them
+            the way a local would want to read them — in Philippine time, with the monsoon in mind.
+          </p>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="sources-h">
+        <div class="card__head">
+          <h2 id="sources-h" class="card__title">Where the numbers come from</h2>
+        </div>
+        <p class="muted">
+          Every value on this site comes from a live weather API. Nothing is invented or hard-coded to
+          look plausible — if a reading can't be fetched, the section says so plainly instead of showing
+          a fake number.
+        </p>
+        <div class="about-grid">
+          <div class="about-item">
+            <i data-lucide="satellite-dish" aria-hidden="true"></i>
+            <div>
+              <strong>WeatherAPI.com</strong>
+              <p class="muted">
+                Current conditions, the hourly forecast, air quality, sunrise and sunset, and any
+                official alerts. These need an API key configured on the server; without one, those
+                sections show a clear "unavailable" notice.
+              </p>
+            </div>
+          </div>
+          <div class="about-item">
+            <i data-lucide="globe" aria-hidden="true"></i>
+            <div>
+              <strong>Open-Meteo</strong>
+              <p class="muted">
+                The 7-day forecast and recent history. Open-Meteo is keyless, so the forecast, history,
+                and derived advisories keep working even when the current-conditions provider isn't
+                configured.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="advisories-h">
+        <div class="card__head">
+          <h2 id="advisories-h" class="card__title">How advisories are made</h2>
+        </div>
+        <p class="muted">
+          Alerts on this site come in three layers, kept visually and textually distinct so you always
+          know what you're looking at:
+        </p>
+        <ol class="about-list">
+          <li>
+            <strong>Official alerts</strong> — passed through unchanged from the weather provider when a
+            warning is in effect for the area.
+          </li>
+          <li>
+            <strong>Derived advisories</strong> — plain-language notes our system generates from
+            forecast thresholds (for example, sustained heavy rain or a high heat index). These are
+            labeled "not official" everywhere they appear.
+          </li>
+          <li>
+            <strong>Official channels</strong> — a permanent link to PAGASA, shown whether or not any
+            alert is active.
+          </li>
+        </ol>
+        <div class="alert-card__disclaimer alert-card__disclaimer--plain">
+          <i data-lucide="info" aria-hidden="true"></i>
+          <span>
+            Derived advisories are a convenience, not a warning service. For decisions about safety,
+            follow PAGASA and your local disaster risk reduction office.
+          </span>
+        </div>
+      </section>
+
+      <div class="grid-2">
+        <section class="card" aria-labelledby="times-h">
+          <div class="card__head">
+            <h2 id="times-h" class="card__title">Times &amp; units</h2>
+          </div>
+          <p class="muted">
+            All timestamps are shown in Philippine Standard Time (UTC+8), no matter your device's time
+            zone. Temperatures default to Celsius; switch to Fahrenheit any time from the header — the
+            conversion happens in your browser.
+          </p>
+        </section>
+
+        <section class="card" aria-labelledby="privacy-h">
+          <div class="card__head">
+            <h2 id="privacy-h" class="card__title">Accounts &amp; privacy</h2>
+          </div>
+          <p class="muted">
+            Accounts are optional. Signed out, your unit and theme choices are saved locally in your
+            browser. Signed in, those same preferences sync to your account — that's all an account
+            stores. If the server has no database configured, accounts are hidden and the app works
+            exactly as before.
+          </p>
+        </section>
+      </div>
+
+      <section class="card" aria-labelledby="built-h">
+        <div class="card__head">
+          <h2 id="built-h" class="card__title">Built with</h2>
+        </div>
+        <div class="pill-row">
+          <span class="pill">Node &amp; Express</span>
+          <span class="pill">Vanilla ES modules</span>
+          <span class="pill">Chart.js</span>
+          <span class="pill">Leaflet + OpenStreetMap</span>
+          <span class="pill">WeatherAPI.com</span>
+          <span class="pill">Open-Meteo</span>
+        </div>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="/js/pages/about.js"></script>
+  </body>
+</html>

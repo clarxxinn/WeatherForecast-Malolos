@@ -1,0 +1,164 @@
+/* ==========================================================================
+   The "living sky" — the signature element. The hero's background is driven by
+   the REAL current/forecast condition + day/night (js/icons.js -> .sky--*).
+   Each theme sets three gradient stops and an accent glow; wet conditions add
+   animated precipitation. All motion is disabled under prefers-reduced-motion.
+   Hero text is always light and sits over a scrim, so it stays legible on any
+   sky regardless of the UI theme.
+   ========================================================================== */
+
+.sky {
+  --sky-a: #3e92c6;
+  --sky-b: #6fb4dd;
+  --sky-c: #a9cee2;
+  --sky-glow: rgba(255, 255, 255, 0.35);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(165deg, var(--sky-a) 0%, var(--sky-b) 52%, var(--sky-c) 100%);
+  color: #f7fbfd;
+}
+
+/* Soft glow (sun/moon position) + bottom scrim for text contrast. */
+.sky::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(120px 120px at 82% 26%, var(--sky-glow), transparent 70%),
+    linear-gradient(to top, var(--scrim), transparent 46%);
+}
+
+/* --- Clear --- */
+.sky--clear-day {
+  --sky-a: #1f8fd6;
+  --sky-b: #46a9e0;
+  --sky-c: #8fd0f0;
+  --sky-glow: rgba(255, 214, 130, 0.85);
+}
+.sky--clear-night {
+  --sky-a: #071834;
+  --sky-b: #0f2a4e;
+  --sky-c: #1c3f68;
+  --sky-glow: rgba(206, 224, 255, 0.55);
+}
+.sky--partly-day {
+  --sky-a: #2f88c6;
+  --sky-b: #5aa6d5;
+  --sky-c: #9cc6e0;
+  --sky-glow: rgba(255, 220, 150, 0.6);
+}
+.sky--partly-night {
+  --sky-a: #0c2038;
+  --sky-b: #163251;
+  --sky-c: #244a6f;
+  --sky-glow: rgba(196, 216, 245, 0.4);
+}
+.sky--cloudy {
+  --sky-a: #536b79;
+  --sky-b: #6f8794;
+  --sky-c: #97a8b2;
+  --sky-glow: rgba(255, 255, 255, 0.28);
+}
+.sky--fog {
+  --sky-a: #7f8f97;
+  --sky-b: #9aa8af;
+  --sky-c: #c1cbd0;
+  --sky-glow: rgba(255, 255, 255, 0.4);
+}
+.sky--rain {
+  --sky-a: #274a58;
+  --sky-b: #3d626f;
+  --sky-c: #567680;
+  --sky-glow: rgba(180, 210, 220, 0.25);
+}
+.sky--heavy-rain {
+  --sky-a: #1b3540;
+  --sky-b: #2b4b56;
+  --sky-c: #3c5d68;
+  --sky-glow: rgba(150, 185, 196, 0.2);
+}
+.sky--storm {
+  --sky-a: #141f27;
+  --sky-b: #20313b;
+  --sky-c: #2f454f;
+  --sky-glow: rgba(255, 246, 214, 0.18);
+}
+.sky--snow {
+  --sky-a: #62788a;
+  --sky-b: #899eac;
+  --sky-c: #b7c8d2;
+  --sky-glow: rgba(255, 255, 255, 0.5);
+}
+
+/* --- Precipitation layer (rain/drizzle/storm) --- */
+.sky--rain::after,
+.sky--heavy-rain::after,
+.sky--storm::after {
+  content: '';
+  position: absolute;
+  inset: -20% -10% -10% -10%;
+  z-index: -1;
+  background-image: repeating-linear-gradient(
+    108deg,
+    rgba(255, 255, 255, 0.16) 0px,
+    rgba(255, 255, 255, 0.16) 1px,
+    transparent 1px,
+    transparent 9px
+  );
+  background-size: 100% 220px;
+  opacity: 0.55;
+}
+.sky--heavy-rain::after {
+  opacity: 0.8;
+  background-size: 100% 150px;
+}
+
+/* --- Motion (opt-in via no-preference) --- */
+@media (prefers-reduced-motion: no-preference) {
+  .sky--rain::after,
+  .sky--heavy-rain::after,
+  .sky--storm::after {
+    animation: sky-rain 0.9s linear infinite;
+  }
+  .sky--heavy-rain::after {
+    animation-duration: 0.55s;
+  }
+  .sky--clear-day::before {
+    animation: sky-breathe 9s var(--ease) infinite;
+  }
+  .sky--storm {
+    animation: sky-flash 7s steps(1, end) infinite;
+  }
+}
+
+@keyframes sky-rain {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -60px 220px;
+  }
+}
+@keyframes sky-breathe {
+  50% {
+    filter: brightness(1.06);
+  }
+}
+@keyframes sky-flash {
+  0%,
+  96%,
+  100% {
+    box-shadow: none;
+  }
+  97% {
+    box-shadow: inset 0 0 200px 40px rgba(255, 250, 224, 0.45);
+  }
+  98% {
+    box-shadow: none;
+  }
+  99% {
+    box-shadow: inset 0 0 160px 30px rgba(255, 250, 224, 0.3);
+  }
+}

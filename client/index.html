@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Malolos Weather Monitor — live conditions for Malolos, Bulacan</title>
+    <meta
+      name="description"
+      content="Live weather for Malolos, Bulacan: current conditions, hourly and 7-day forecasts, air quality, and monsoon advisories — in Philippine time."
+    />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#08121a" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/css/themes.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/weather-bg.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+
+    <!-- Applies the saved/system theme before first paint (no flash). -->
+    <script src="/js/theme-init.js"></script>
+  </head>
+  <body data-page="dashboard">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header id="site-header"></header>
+
+    <main id="main" class="shell page">
+      <!-- Signature: the living-sky hero, driven by the real current condition. -->
+      <section id="hero" class="hero hero--skeleton" aria-label="Current conditions" aria-busy="true"></section>
+
+      <section aria-labelledby="metrics-h">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Live readings</p>
+            <h2 id="metrics-h" class="section-title">Current conditions</h2>
+          </div>
+          <span id="metrics-stamp" class="meta-line"></span>
+        </div>
+        <div id="metrics" class="metric-grid"></div>
+      </section>
+
+      <div class="grid-2">
+        <section class="card" aria-labelledby="hourly-h">
+          <div class="card__head">
+            <h2 id="hourly-h" class="card__title">Next 24 hours</h2>
+            <a class="btn btn--ghost btn--sm" href="/forecast">
+              <span>Full forecast</span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div id="hourly"></div>
+        </section>
+
+        <section class="card" aria-labelledby="astro-h">
+          <div class="card__head">
+            <h2 id="astro-h" class="card__title">Sun &amp; daylight</h2>
+          </div>
+          <div id="today-astro"></div>
+        </section>
+      </div>
+
+      <div class="grid-2">
+        <section class="card" aria-labelledby="aq-h">
+          <div class="card__head">
+            <h2 id="aq-h" class="card__title">Air quality</h2>
+          </div>
+          <div id="air-quality"></div>
+        </section>
+
+        <section class="card" aria-labelledby="alertprev-h">
+          <div class="card__head">
+            <h2 id="alertprev-h" class="card__title">Active alerts</h2>
+            <a class="btn btn--ghost btn--sm" href="/alerts">
+              <span>All alerts</span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div id="alert-preview"></div>
+        </section>
+      </div>
+
+      <section class="card" aria-labelledby="daily-h">
+        <div class="card__head">
+          <h2 id="daily-h" class="card__title">7-day outlook</h2>
+          <a class="btn btn--ghost btn--sm" href="/forecast">
+            <span>Details &amp; charts</span>
+            <i data-lucide="arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div id="daily-mini"></div>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <noscript>
+      <div class="shell page">
+        <div class="state state--notice">
+          <p class="state__title">JavaScript is required</p>
+          <p class="state__msg">
+            This dashboard loads live weather data in your browser. Enable JavaScript to view current
+            conditions, forecasts, and advisories for Malolos.
+          </p>
+        </div>
+      </div>
+    </noscript>
+
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="/js/pages/dashboard.js"></script>
+  </body>
+</html>

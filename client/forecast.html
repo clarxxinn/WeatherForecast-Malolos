@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Forecast — Malolos Weather Monitor</title>
+    <meta
+      name="description"
+      content="Hourly and 7-day weather forecast for Malolos, Bulacan: temperature trend, rain chance, and daily highs and lows."
+    />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#08121a" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/css/themes.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/weather-bg.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+
+    <script src="/js/theme-init.js"></script>
+  </head>
+  <body data-page="forecast">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header id="site-header"></header>
+
+    <main id="main" class="shell page">
+      <section class="section-head" aria-label="Page heading">
+        <div>
+          <p class="eyebrow">Malolos, Bulacan</p>
+          <h1 class="section-title">7-day forecast</h1>
+          <p class="section-sub">
+            Daily outlook from Open-Meteo, with an hourly detail strip. All times are Philippine
+            Standard Time.
+          </p>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="daily-h">
+        <div class="card__head">
+          <h2 id="daily-h" class="card__title">Daily outlook</h2>
+          <span id="daily-stamp" class="meta-line"></span>
+        </div>
+        <div id="daily"></div>
+      </section>
+
+      <section class="card" aria-labelledby="temp-chart-h">
+        <div class="card__head">
+          <h2 id="temp-chart-h" class="card__title">Temperature trend</h2>
+          <span class="card__hint">Daily high &amp; low, °</span>
+        </div>
+        <div id="temp-chart-host">
+          <div class="chart-wrap"><canvas id="temp-chart" role="img" aria-label="7-day high and low temperature trend"></canvas></div>
+          <div id="temp-legend" class="chart-legend"></div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="precip-chart-h">
+        <div class="card__head">
+          <h2 id="precip-chart-h" class="card__title">Rain outlook</h2>
+          <span class="card__hint">Chance of rain &amp; expected total</span>
+        </div>
+        <div id="precip-chart-host">
+          <div class="chart-wrap"><canvas id="precip-chart" role="img" aria-label="7-day chance of rain and precipitation total"></canvas></div>
+          <div id="precip-legend" class="chart-legend"></div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="hourly-h">
+        <div class="card__head">
+          <h2 id="hourly-h" class="card__title">Hourly detail</h2>
+          <span id="hourly-stamp" class="meta-line"></span>
+        </div>
+        <div id="hourly"></div>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <noscript>
+      <div class="shell page">
+        <div class="state state--notice">
+          <p class="state__title">JavaScript is required</p>
+          <p class="state__msg">Enable JavaScript to view the forecast and charts for Malolos.</p>
+        </div>
+      </div>
+    </noscript>
+
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script type="module" src="/js/pages/forecast.js"></script>
+  </body>
+</html>

@@ -1,0 +1,157 @@
+/* ==========================================================================
+   Responsive behavior. Desktop-first: the base rules in style.css assume a
+   wide viewport; these progressively adapt down to phones. The primary nav
+   collapses into a drop panel toggled by .nav-open (set on .masthead by nav.js).
+   ========================================================================== */
+
+/* --- Tablet / collapsed nav (<= 960px) ------------------------------------ */
+@media (max-width: 960px) {
+  .nav-toggle {
+    display: inline-grid;
+  }
+  .masthead__tools {
+    margin-left: auto;
+    gap: var(--sp-3);
+  }
+
+  .nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    margin-right: 0;
+    padding: var(--sp-3) var(--sp-5) var(--sp-5);
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+  }
+  .nav-open .nav {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+  .nav__link {
+    padding: 12px;
+    font-size: 1rem;
+  }
+  .nav__icon {
+    width: 19px;
+    height: 19px;
+  }
+  /* active indicator becomes a left bar in the vertical menu */
+  .nav__link.is-active::after {
+    left: 0;
+    right: auto;
+    top: 9px;
+    bottom: 9px;
+    width: 3px;
+    height: auto;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Small tablet / large phone (<= 720px) -------------------------------- */
+@media (max-width: 720px) {
+  .shell {
+    padding-inline: var(--sp-4);
+  }
+  .station-clock {
+    display: none;
+  }
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+    padding-block: var(--sp-5);
+  }
+  .hero {
+    min-height: 300px;
+  }
+  .hero__body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .chart-wrap {
+    height: 250px;
+  }
+  #weather-map {
+    height: 380px;
+  }
+  .page {
+    padding-block: var(--sp-5) var(--sp-7);
+  }
+  .page > * + * {
+    margin-top: var(--sp-5);
+  }
+}
+
+/* --- Phone (<= 540px) ----------------------------------------------------- */
+@media (max-width: 540px) {
+  .account__name {
+    display: none;
+  }
+  .account__trigger {
+    padding: 5px;
+  }
+  .hero__strip {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: var(--sp-3) var(--sp-4);
+  }
+  .hero__top {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+  .hero__stamp {
+    text-align: left;
+    align-items: flex-start;
+  }
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card {
+    padding: var(--sp-4);
+  }
+
+  /* Daily rows: condition text drops to its own line */
+  .day {
+    grid-template-columns: 1fr auto;
+    row-gap: var(--sp-2);
+  }
+  .day__cond {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+
+  .range-tabs {
+    width: 100%;
+  }
+  .range-tab {
+    flex: 1;
+    text-align: center;
+  }
+  .pagasa-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* --- Very small (<= 380px) ------------------------------------------------ */
+@media (max-width: 380px) {
+  .brand__text {
+    display: none;
+  }
+  .hero__strip {
+    grid-template-columns: 1fr;
+  }
+}

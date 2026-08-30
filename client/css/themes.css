@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Design tokens — the instrument palette + type system.
+   Light is the default; [data-theme="dark"] overrides. The "living sky" hero
+   colors are intentionally independent of the UI theme (see weather-bg.css):
+   the sky reflects the weather, the chrome reflects the user's theme choice.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Type roles */
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Spacing scale */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 72px;
+
+  /* Radii */
+  --r-sm: 9px;
+  --r: 16px;
+  --r-lg: 24px;
+  --r-pill: 999px;
+
+  --maxw: 1180px;
+  --header-h: 66px;
+  --ease: cubic-bezier(0.22, 0.68, 0.24, 1);
+
+  /* Neutrals + surfaces (light) */
+  --bg: #e6eef1;
+  --bg-tint: #d8e4e9;
+  --surface: #ffffff;
+  --surface-2: #f1f6f8;
+  --surface-3: #e8f1f4;
+  --ink: #0e1a24;
+  --ink-2: #47616e;
+  --ink-3: #798f9b;
+  --line: #d3e0e5;
+  --line-strong: #bacdd4;
+
+  /* Accents */
+  --sun: #ef9f0d;         /* signature: tropical sun — graphic use */
+  --sun-soft: #fcefd4;
+  --sky: #1187a2;         /* monsoon cyan — borders/accents */
+  --sky-strong: #0b6076;  /* text-safe on light */
+  --sky-soft: #e0f0f3;
+
+  /* Buttons — monochrome primary keeps amber special */
+  --btn-bg: #0e1a24;
+  --btn-ink: #ffffff;
+
+  --focus: #1187a2;
+
+  /* Severity (text/icon + chip background) */
+  --sev-severe: #ce3438;
+  --sev-severe-bg: #fae9e9;
+  --sev-warning: #b0600a;
+  --sev-warning-bg: #f9eddb;
+  --sev-advisory: #8a6d00;
+  --sev-advisory-bg: #f6f0d6;
+
+  /* Chart ink (read by charts.js via getComputedStyle) */
+  --chart-grid: #dbe6ea;
+  --chart-axis: #798f9b;
+  --chart-temp: #ef7a3d;
+  --chart-temp-2: #1187a2;
+  --chart-rain: #2f9bd0;
+  --chart-fill: rgba(239, 122, 61, 0.14);
+
+  --shadow-sm: 0 1px 2px rgba(14, 26, 36, 0.05), 0 1px 3px rgba(14, 26, 36, 0.05);
+  --shadow: 0 2px 6px rgba(14, 26, 36, 0.05), 0 16px 34px -18px rgba(14, 26, 36, 0.22);
+  --shadow-lg: 0 34px 70px -30px rgba(14, 26, 36, 0.4);
+  --scrim: rgba(9, 17, 24, 0.34);
+
+  /* Loading skeletons */
+  --skel: #dbe6ea;
+  --skel-glow: rgba(255, 255, 255, 0.65);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #08121a;
+  --bg-tint: #0b1822;
+  --surface: #10212c;
+  --surface-2: #162935;
+  --surface-3: #1c3541;
+  --ink: #e9f1f4;
+  --ink-2: #a3b8c3;
+  --ink-3: #6f8894;
+  --line: #213743;
+  --line-strong: #2d4855;
+
+  --sun: #f7b23b;
+  --sun-soft: #33270f;
+  --sky: #40c1d5;
+  --sky-strong: #79d8e8;
+  --sky-soft: #10303a;
+
+  --btn-bg: #e9f1f4;
+  --btn-ink: #0e1a24;
+
+  --focus: #40c1d5;
+
+  --sev-severe: #ff787c;
+  --sev-severe-bg: #3a1e20;
+  --sev-warning: #fbab4f;
+  --sev-warning-bg: #382915;
+  --sev-advisory: #edcb4c;
+  --sev-advisory-bg: #322b12;
+
+  --chart-grid: #203642;
+  --chart-axis: #6f8894;
+  --chart-temp: #ff9a63;
+  --chart-temp-2: #40c1d5;
+  --chart-rain: #4bb6e6;
+  --chart-fill: rgba(255, 154, 99, 0.16);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 2px 6px rgba(0, 0, 0, 0.35), 0 20px 40px -22px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 40px 80px -30px rgba(0, 0, 0, 0.8);
+  --scrim: rgba(4, 9, 13, 0.5);
+
+  --skel: #1a2f3b;
+  --skel-glow: rgba(255, 255, 255, 0.06);
+}

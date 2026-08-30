@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Map — Malolos Weather Monitor</title>
+    <meta
+      name="description"
+      content="Interactive map centered on Malolos, Bulacan, with the monitoring station and current conditions."
+    />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#08121a" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="/css/themes.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/weather-bg.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+
+    <script src="/js/theme-init.js"></script>
+  </head>
+  <body data-page="map">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header id="site-header"></header>
+
+    <main id="main" class="shell page">
+      <section class="section-head" aria-label="Page heading">
+        <div>
+          <p class="eyebrow">Malolos, Bulacan</p>
+          <h1 class="section-title">Map</h1>
+          <p class="section-sub">
+            The monitoring station and its current reading, on an OpenStreetMap base. Pan and zoom to
+            place Malolos within Bulacan and Manila Bay.
+          </p>
+        </div>
+      </section>
+
+      <div id="weather-map" role="application" aria-label="Map of the Malolos monitoring station"></div>
+      <div id="map-note" class="meta-line"></div>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <noscript>
+      <div class="shell page">
+        <div class="state state--notice">
+          <p class="state__title">JavaScript is required</p>
+          <p class="state__msg">Enable JavaScript to load the interactive map.</p>
+        </div>
+      </div>
+    </noscript>
+
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="/js/pages/map.js"></script>
+  </body>
+</html>

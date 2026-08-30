@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>History — Malolos Weather Monitor</title>
+    <meta
+      name="description"
+      content="Recent weather history for Malolos, Bulacan: temperature and rainfall over the last 24 hours, 7 days, or 30 days."
+    />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#08121a" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/css/themes.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/weather-bg.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+
+    <script src="/js/theme-init.js"></script>
+  </head>
+  <body data-page="history">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header id="site-header"></header>
+
+    <main id="main" class="shell page">
+      <section class="section-head" aria-label="Page heading">
+        <div>
+          <p class="eyebrow">Malolos, Bulacan</p>
+          <h1 class="section-title">Recent history</h1>
+          <p class="section-sub">
+            Observed temperature and rainfall from Open-Meteo's reanalysis. Choose a window to see how
+            conditions have trended.
+          </p>
+        </div>
+        <div
+          id="range-tabs"
+          class="range-tabs"
+          role="tablist"
+          aria-label="History time range"
+        >
+          <button class="range-tab is-active" type="button" role="tab" data-range="24h" aria-selected="true">24h</button>
+          <button class="range-tab" type="button" role="tab" data-range="7d" aria-selected="false">7d</button>
+          <button class="range-tab" type="button" role="tab" data-range="30d" aria-selected="false">30d</button>
+        </div>
+      </section>
+
+      <div id="history-stats" class="metric-grid"></div>
+
+      <section class="card" aria-labelledby="temp-hist-h">
+        <div class="card__head">
+          <h2 id="temp-hist-h" class="card__title">Temperature</h2>
+          <span id="temp-hist-stamp" class="meta-line"></span>
+        </div>
+        <div id="temp-hist-host">
+          <div class="chart-wrap"><canvas id="temp-hist" role="img" aria-label="Temperature history"></canvas></div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="precip-hist-h">
+        <div class="card__head">
+          <h2 id="precip-hist-h" class="card__title">Rainfall</h2>
+          <span class="card__hint">Millimetres per interval</span>
+        </div>
+        <div id="precip-hist-host">
+          <div class="chart-wrap"><canvas id="precip-hist" role="img" aria-label="Rainfall history"></canvas></div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <noscript>
+      <div class="shell page">
+        <div class="state state--notice">
+          <p class="state__title">JavaScript is required</p>
+          <p class="state__msg">Enable JavaScript to view weather history and charts.</p>
+        </div>
+      </div>
+    </noscript>
+
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script type="module" src="/js/pages/history.js"></script>
+  </body>
+</html>
